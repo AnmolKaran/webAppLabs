@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+    
+</head>
+<body>
+    <p>
+        The {{RandomThing}} was DESTROYED by {{Name}}, who brought a {{Animal}} along with him, which is crazy because it happened right before the {{Adjective}} day on {{Date}}.
+    </p>
+    <br>
+    <br>
+
+    <img id = "laptop"src="{{url_for('static', filename='images/Laptop.jpg')}}" align="middle" style="visibility: hidden;" />
+    <img id = "closet"src="{{url_for('static', filename='images/Closet.webp')}}" align="middle" style="visibility: hidden;"/>
+    <img id = "tree"src="{{url_for('static', filename='images/Tree.jpg')}}" align="middle" style="visibility: hidden;"/>
+    <img id = "lamp"src="{{url_for('static', filename='images/Lamp.jpg')}}" align="middle" style="visibility: hidden;"/>
+
+  <img src = static\img\{{RandomThing}}.jpg>
+</body>
+</html>

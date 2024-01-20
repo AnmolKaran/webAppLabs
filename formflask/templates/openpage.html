@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>HEADER</h1>
+   
+
+    <form action = "inputted" method = 'POST' onsubmit = "return checkSubmitted()">
+        <input id = "ord" type="text" name="f_order">
+        <input  id = "na" type = "text" name = "f_name">
+        <input id = "sub" type = "submit">
+
+        <br>
+        <br>
+        <label for="colors">Choose a color:</label>
+        
+        <select name="colors" id="colors">
+            <option value = "selectcard">Please select</option>
+            <option value="red">red</option>
+            <option value="green">green</option>
+            <option value="yellow">yellow</option>
+            <option value="blue">blue</option>
+        </select>
+        <br>
+        <br>
+        <br>
+        <input type="checkbox" id="food" name="food" value="food">
+        <label for="food"> I like food</label><br>
+        <input type="checkbox" id="basketball" name="basketball" value="basketball">
+        <label for="basketball"> I like basketball</label><br>
+        <input type="checkbox" id="soccer" name="soccer" value="soccer">
+        <label for="soccer"> I like soccer</label><br>
+
+
+        <select name="question2" id="question2">
+            <option value = "selectcard">Please select</option>
+            <option value="answer1">answer 1</option>
+            <option value="answer2">answer 2</option>
+            <option value="answer3">answer 3</option>
+            <option value="answer4">answer 4</option>
+        </select>
+
+        
+    </form>
+    <br>
+    <br>
+    <script>
+
+        function checkSubmitted(){
+            if (document.getElementById("colors").value == "selectcard"){
+                return false 
+            }
+            else{
+                return true
+            }
+        }
+    </script>
+    
+</body>
+</html>

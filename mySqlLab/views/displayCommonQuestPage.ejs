@@ -1,0 +1,34 @@
+<!-- displayCommonQuestPage.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Common Quest Page</title>
+</head>
+<body>
+    <h1>All characters with Quest <%= quest %></h1>
+
+    <% if (rows.length > 0) { %>
+        <table border="1">
+            <tr>
+                <th>Character Name</th>
+                <th>Quest Name</th>
+            </tr>
+            <% rows.forEach(row => { %>
+                <tr>
+                    <td><%= row.c_name %></td>
+                    <td><%= row.quest_name %></td>
+                </tr>
+            <% }); %>
+        </table>
+    <%  } %>
+
+    <br>
+    <br>
+    <a style = "font-style: Verdana"href="/">Home page</a>
+
+
+</body>
+</html>

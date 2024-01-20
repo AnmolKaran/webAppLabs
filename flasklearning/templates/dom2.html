@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos officia distinctio quidem recusandae, sequi sunt a eligendi doloribus natus soluta sint enim eveniet ut non nihil adipisci. Ab, mollitia natus.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero quibusdam id omnis eveniet ea eos nisi ullam adipisci aperiam praesentium, dolorem consectetur voluptatem, facilis odio laborum cupiditate fuga, perspiciatis voluptate!
+    </p>
+
+    <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis amet sequi magnam deserunt, eligendi, dolore rem provident omnis officia iste voluptatem quo. Non est aliquid error qui repellat, ratione saepe!
+    </p>
+    <script>
+        let allp = document.querySelectorAll("p")
+        for (let i=1;i<allp.length; i++) {
+
+            allp[i].style.color = 'Red'
+            allp[i].addEventListener("click",(event)=>{
+                allp[i].innerHTML = '<li>TEST LI</li>'
+            })
+
+            document.addEventListener("keydown",(event)=>{
+                allp[i].style.color = "blue"
+            })
+            document.addEventListener("keyup",(event)=>{
+                allp[i].style.color = "green"
+            })
+        }
+    </script>
+</body>
+</html>

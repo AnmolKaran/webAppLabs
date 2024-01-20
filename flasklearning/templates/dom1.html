@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <p id = "myp"> 
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid necessitatibus tempore perferendis exercitationem accusamus optio odit, possimus quis temporibus atque? Voluptates ullam adipisci dolore nesciunt reprehenderit tempora inventore nobis eum.
+    </p>
+    <script>
+        const thatParagraph = document.getElementById("myp")
+        let currColor = "Red"
+        function changeColor(myColor){
+            
+            thatParagraph.style.color = myColor
+    
+        }
+        thatParagraph.addEventListener("click",(event)=>{
+            if (currColor == "Blue"){
+                changeColor("Red")
+                currColor = "Red"
+
+            }
+            else{
+                changeColor("Blue")
+                currColor = "Blue"
+            }
+            console.log(thatParagraph.id)
+
+        })
+
+
+
+
+
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+
+  <h3>Commanders</h3>
+  <p id='commanders'></p>
+  <button type="button" onclick="doTheFetch()">PRESS ME</button>
+
+
+
+  <script>
+    async function doTheFetch() {
+        const response = await fetch('http://127.0.0.1/main')
+        const data = await response.json()
+        let counter_span = document.getElementById("commanders")
+        counter_span.innerHTML = data.commanders;
+    }    
+  </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+li{
+    display:inline;
+}
+
+.topbar a {
+    background-color: darkslateblue;
+    color:white;
+    padding:10px;
+    text-decoration: none;
+    width:50%
+    
+}
+
+.topbar{
+    background-color:  darkslateblue;
+    padding:5px;
+}

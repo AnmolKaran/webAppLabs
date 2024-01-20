@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style type = "text/css">
+        .svg-wrapper {
+            background-color: white;
+            color: white;
+        }
+        .rectangles:hover{
+            fill: lightgreen;
+        }
+        
+
+
+        
+
+            
+        
+    </style>
+
+</head>
+<body>
+    <h1>
+        <center>
+            TIC TAC TOE
+        </center>
+    </h1>
+    <br>
+    <h2 id = "oversign">
+        <center>
+            
+        </center>
+    </h2>
+    <div class="svg-wrapper">
+        <svg  viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <rect class = "rectangles" id= "00" x="10" y="10" width="10" height="10"  stroke = "#edabab"  fill="#ffffff"/>
+            <rect class = "rectangles" id= "10" x="20" y="10" width="10" height="10"  stroke = "#edabab"  fill="#ffffff"/>
+            <rect class = "rectangles" id= "20" x="30" y="10" width="10" height="10"  stroke = "#edabab"  fill="#ffffff"/>
+            <rect class = "rectangles" id= "01" x="10" y="20" width="10" height="10"  stroke = "#edabab"  fill="#ffffff"/>
+            <rect class = "rectangles" id= "11" x="20" y="20" width="10" height="10"  stroke = "#edabab"  fill="#ffffff"/>
+            <rect class = "rectangles" id= "21" x="30" y="20" width="10" height="10"  stroke = "#edabab"  fill="#ffffff"/>
+            <rect class = "rectangles" id= "02" x="10" y="30" width="10" height="10"  stroke = "#edabab"  fill="#ffffff"/>
+            <rect class = "rectangles" id= "12" x="20" y="30" width="10" height="10"  stroke = "#edabab"  fill="#ffffff"/>
+            <rect class = "rectangles" id= "22" x="30" y="30" width="10" height="10"  stroke = "#edabab"  fill="#ffffff"/>
+            <circle visibility ="hidden" class = "o" id = "00" cx ="15" cy = "15" r = "3" stroke = "black"  stroke-width = "1" fill = "none"/>  
+            <circle visibility ="hidden" class = "o" id = "10" cx ="25" cy = "15" r = "3" stroke = "black"  stroke-width = "1" fill = "none"/>  
+            <circle visibility ="hidden" class = "o" id = "20" cx ="35" cy = "15" r = "3" stroke = "black"  stroke-width = "1" fill = "none"/>  
+            <circle visibility ="hidden"  class = "o"id = "01" cx ="15" cy = "25" r = "3" stroke = "black"  stroke-width = "1" fill = "none"/>  
+            <circle visibility ="hidden"  class = "o" id = "11" cx ="25" cy = "25" r = "3" stroke = "black"  stroke-width = "1" fill = "none"/>  
+            <circle visibility ="hidden" class = "o" id = "21" cx ="35" cy = "25" r = "3" stroke = "black"  stroke-width = "1" fill = "none"/>  
+            <circle visibility ="hidden" class = "o" id = "02" cx ="15" cy = "35" r = "3" stroke = "black"  stroke-width = "1" fill = "none"/>  
+            <circle visibility ="hidden" class = "o" id = "12" cx ="25" cy = "35" r = "3" stroke = "black"  stroke-width = "1" fill = "none"/>  
+            <circle visibility ="hidden" class = "o" id = "22" cx ="35" cy = "35" r = "3" stroke = "black"  stroke-width = "1" fill = "none"/>  
+
+            <line class = "x" visibility ="hidden" id = "10" x1="22" y1="12" x2="28" y2="18" stroke="black" />
+            <line class = "x"visibility ="hidden" id = "10" x1="28" y1="12" x2="22" y2="18" stroke="black" />
+
+            <line class = "x" visibility ="hidden" id = "00" x1="12" y1="12" x2="18" y2="18" stroke="black" />
+            <line class = "x" visibility ="hidden" id="00" x1="18" y1="12" x2="12" y2="18" stroke="black" />
+
+            <line class = "x" visibility ="hidden" id= "20" x1="32" y1="12" x2="38" y2="18" stroke="black" />
+            <line class = "x" visibility ="hidden" id= "20" x1="38" y1="12" x2="32" y2="18" stroke="black" />
+
+            <line class = "x" visibility ="hidden" id= "01"x1="12" y1="22" x2="18" y2="28" stroke="black" />
+            <line class = "x" visibility ="hidden" id= "01"x1="18" y1="22" x2="12" y2="28" stroke="black" />
+
+            <line class = "x" visibility ="hidden" id= "11" x1="22" y1="22" x2="28" y2="28" stroke="black" />
+            <line class = "x" visibility ="hidden" id= "11" x1="28" y1="22" x2="22" y2="28" stroke="black" />
+
+            <line class = "x" visibility ="hidden" id= "21"x1="32" y1="22" x2="38" y2="28" stroke="black" />
+            <line class = "x" visibility ="hidden" id= "21"x1="38" y1="22" x2="32" y2="28" stroke="black" />
+
+            <line class = "x" visibility ="hidden" id= "02"x1="12" y1="32" x2="18" y2="38" stroke="black" />
+            <line class = "x" visibility ="hidden" id= "02"x1="18" y1="32" x2="12" y2="38" stroke="black" />
+            
+            <line class = "x" visibility ="hidden" id= "12"x1="22" y1="32" x2="28" y2="38" stroke="black" />
+            <line class = "x" visibility ="hidden" id= "12"x1="28" y1="32" x2="22" y2="38" stroke="black" />
+
+            <line class = "x" visibility ="hidden" id= "22"x1="32" y1="32" x2="38" y2="38" stroke="black" />
+            <line class = "x" visibility ="hidden" id= "22"x1="38" y1="32" x2="32" y2="38" stroke="black" />
+
+
+
+      
+        </svg>
+    </div>
+    <script >
+        currentTurn = 0 //0 is x and 1 is O
+
+        const rects = Array.from(document.getElementsByClassName('rectangles'));
+        console.log(rects)
+        let board = [["_","_","_"],
+                     ["_","_","_"],
+                     ["_","_","_"]]
+        let started = false
+        let winner = " "
+        let gameOver = false
+        playerTurn = false
+        turn = "x"
+    
+        rects.forEach(function(svgElement) {
+            svgElement.addEventListener('click', function(event){
+                let spaceAvail = false
+                
+                
+                if (gameOver == false){
+                    let run = playerMove(event.target.id)
+                    
+                    if (run[1] == true){
+                        gameOver = true 
+                        
+                    }
+                    
+                }
+                
+                
+            });
+
+        });
+
+        displayBoard = function(){
+            console.log(board[0] + "\n" + board[1] + "\n"+ board[2])
+            
+        } 
+        playerMove = function(rectId){
+            let boolover = false
+            xcoord = rectId[0]
+            ycoord = rectId[1]
+            
+            if (board[ycoord][xcoord] == "_"){
+                board[ycoord][xcoord] = turn
+                if (turn =="x"){
+                    elems = Array.from(document.getElementsByClassName("x"))
+                    for (i in elems){
+
+                        if (elems[i].id == rectId){
+                            elems[i].style.visibility = "visible"
+                        }
+                    }
+                    turn = "o"
+                }
+                else{
+                    elems = Array.from(document.getElementsByClassName("o"))
+                    for (i in elems){
+
+                        if (elems[i].id == rectId){
+                            elems[i].style.visibility = "visible"
+                        }
+                    }
+                    turn = "x"
+              
+                }
+                
+            }
+            else{
+                document.getElementById("oversign").textContent = "This spot is taken!"
+            }
+            if (boolover == false){
+                displayBoard()
+            }
+            spaceAvail = false
+            for (i in board){
+                    if (board[i].includes("_")){
+                        spaceAvail = true
+                    }
+            }
+            if (spaceAvail ==false ){
+                    gameOver = true
+                    document.getElementById("oversign").textContent ="The game is over. It is a draw!"
+                    boolover = true
+                    return
+
+            }
+            else if (checkWin()[0] == true)   {
+                let over = ("The game is over! The winner is " + checkWin()[1])
+                document.getElementById("oversign").textContent = over
+                boolover = true
+                return
+            }   
+            
+        }
+        
+
+
+      
+                 
+        
+        checkWin = function(){
+            //for i in range 3
+                let winner = "None"
+                if (board[0][0] !=  "_" && board[0][0] == board[1][0] && board[1][0] == board[2][0]){
+                    winner = board[0][0]
+                    gameOver = true
+                }
+                else if (board[0][1] !=  "_" && board[0][1] == board[1][1] && board[1][1] == board[2][1]){
+                    winner = board[0][1]
+                    gameOver = true
+                }
+                else if (board[0][2] !=  "_" && board[0][2] == board[1][2] && board[1][2] == board[2][2]){
+                    winner = board[0][2]
+                    gameOver = true
+                }
+                else if (board[0][0] !=  "_" && board[0][0] == board[0][1] && board[0][1] == board[0][2]){
+                    winner = board[0][0]
+                    gameOver = true
+
+                }
+                else if (board[1][0] != "_"&& board[1][0] == board[1][1] && board[1][1] == board[1][2]){
+                    winner = board[1][0]
+                    gameOver = true
+                } 
+                else if (board[2][0] !=  "_" && board[2][0] == board[2][1] && board[2][1] == board[2][2]){
+                    winner = board[2][0]
+                    gameOver = true
+                }
+                else if (board[0][0] !=  "_" && board[0][0] == board[1][1] && board[1][1] == board[2][2]){
+                    winner = board[0][0]
+                    gameOver = true
+                }
+                else if (board[2][0] !=  "_" && board[2][0] == board[1][1] && board[1][1] == board[0][2]){
+                    winner = board[2][0]
+                    gameOver = true
+                }
+                return [gameOver,winner]
+        }
+
+
+    </script>
+
+
+</body>
+</html>
