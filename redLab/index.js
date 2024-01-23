@@ -348,10 +348,10 @@ app.post('/submit13.125v2', (req,res) => {
           });
       }
       if (userLetter == imageName){
-        updateDB("col5",1,myCookie)
+        updateDB("col6",1,myCookie)
       }
       else{
-        updateDB("col5",0,myCookie)
+        updateDB("col6",0,myCookie)
       }
       const randomIndex = Math.floor(Math.random() * letters.length);
   
@@ -391,10 +391,10 @@ app.post('/submit13.125v2', (req,res) => {
           });
       }
       if (userLetter == imageName){
-        updateDB("col6",1,myCookie)
+        updateDB("col7",1,myCookie)
       }
       else{
-        updateDB("col6",0,myCookie)
+        updateDB("col7",0,myCookie)
       }
       const randomIndex = Math.floor(Math.random() * letters.length);
   
@@ -432,24 +432,312 @@ app.post('/submit13.125v2', (req,res) => {
           });
       }
       if (userLetter == imageName){
-        updateDB("col7",1,myCookie)
+        updateDB("col8",1,myCookie)
       }
       else{
-        updateDB("col7",0,myCookie)
+        updateDB("col8",0,myCookie)
       }
       const randomIndex = Math.floor(Math.random() * letters.length);
   
       const randomLetter = letters[randomIndex];
 
+      res.render("fourthPage",{randomLetter})
   });
   
 
 
+  app.post('/submit3.28', (req,res) => { 
+
+    let userLetter = req.body.userLetter;
+    userLetter = userLetter.toUpperCase()
+    const imageName = req.body.imageName;
+  
+    
+  
+    let myCookie = req.cookies.id
+  
+      console.log(myCookie)
+      if (myCookie){
+          myNewCookieValue = myCookie;
+          let cookieName = 'id'
+          const expirationDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+          res.cookie(cookieName, myNewCookieValue, {
+              expires: expirationDate,
+          });
+      }else{
+          let cookieName = "id"
+          myCookie = uuidv4();
+          
+          const expirationDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+          res.cookie(cookieName, myCookie, {
+              expires: expirationDate,
+          });
+      }
+      if (userLetter == imageName){
+        updateDB("col9",1,myCookie)
+      }
+      else{
+        updateDB("col9",0,myCookie)
+      }
+      const randomIndex = Math.floor(Math.random() * letters.length);
+  
+      const randomLetter = letters[randomIndex];
+
+      res.render("fourthPage2",{randomLetter})
+
+  });
+  
+
+
+  app.post('/submit3.28v2', (req,res) => { 
+
+    let userLetter = req.body.userLetter;
+    userLetter = userLetter.toUpperCase()
+    const imageName = req.body.imageName;
+  
+    
+  
+    let myCookie = req.cookies.id
+  
+      console.log(myCookie)
+      if (myCookie){
+          myNewCookieValue = myCookie;
+          let cookieName = 'id'
+          const expirationDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+          res.cookie(cookieName, myNewCookieValue, {
+              expires: expirationDate,
+          });
+      }else{
+          let cookieName = "id"
+          myCookie = uuidv4();
+          
+          const expirationDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+          res.cookie(cookieName, myCookie, {
+              expires: expirationDate,
+          });
+      }
+      if (userLetter == imageName){
+        updateDB("col10",1,myCookie)
+      }
+      else{
+        updateDB("col10",0,myCookie)
+      }
+      const randomIndex = Math.floor(Math.random() * letters.length);
+  
+      const randomLetter = letters[randomIndex];
+
+      res.render("fifthPage",{randomLetter})
+
+  });
+
+  app.post('/submit1.969', (req,res) => { 
+
+    let userLetter = req.body.userLetter;
+    userLetter = userLetter.toUpperCase()
+    const imageName = req.body.imageName;
+  
+    
+  
+    let myCookie = req.cookies.id
+  
+      console.log(myCookie)
+      if (myCookie){
+          myNewCookieValue = myCookie;
+          let cookieName = 'id'
+          const expirationDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+          res.cookie(cookieName, myNewCookieValue, {
+              expires: expirationDate,
+          });
+      }else{
+          let cookieName = "id"
+          myCookie = uuidv4();
+          
+          const expirationDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+          res.cookie(cookieName, myCookie, {
+              expires: expirationDate,
+          });
+      }
+      if (userLetter == imageName){
+        updateDB("col11",1,myCookie)
+      }
+      else{
+        updateDB("col11",0,myCookie)
+      }
+      const randomIndex = Math.floor(Math.random() * letters.length);
+  
+      const randomLetter = letters[randomIndex];
+
+      res.render("fifthPage2",{randomLetter})
+
+  });
+
+  app.post('/submit1.969v2', (req,res) => { 
+
+    let userLetter = req.body.userLetter;
+    userLetter = userLetter.toUpperCase()
+    const imageName = req.body.imageName;
+  
+    
+  
+    let myCookie = req.cookies.id
+  
+      console.log(myCookie)
+      if (myCookie){
+          myNewCookieValue = myCookie;
+          let cookieName = 'id'
+          const expirationDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+          res.cookie(cookieName, myNewCookieValue, {
+              expires: expirationDate,
+          });
+      }else{
+          let cookieName = "id"
+          myCookie = uuidv4();
+          
+          const expirationDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+          res.cookie(cookieName, myCookie, {
+              expires: expirationDate,
+          });
+      }
+      if (userLetter == imageName){
+        updateDB("col12",1,myCookie)
+      }
+      else{
+        updateDB("col12",0,myCookie)
+      }
+      const randomIndex = Math.floor(Math.random() * letters.length);
+  
+      const randomLetter = letters[randomIndex];
+
+      res.render("fifthPage3",{randomLetter})
+
+  });
+
+
+  app.post('/submit1.969v3', (req,res) => { 
+
+    let userLetter = req.body.userLetter;
+    userLetter = userLetter.toUpperCase()
+    const imageName = req.body.imageName;
+  
+    
+  
+    let myCookie = req.cookies.id
+  
+      console.log(myCookie)
+      if (myCookie){
+          myNewCookieValue = myCookie;
+          let cookieName = 'id'
+          const expirationDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+          res.cookie(cookieName, myNewCookieValue, {
+              expires: expirationDate,
+          });
+      }else{
+          let cookieName = "id"
+          myCookie = uuidv4();
+          
+          const expirationDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+          res.cookie(cookieName, myCookie, {
+              expires: expirationDate,
+          });
+      }
+      if (userLetter == imageName){
+        updateDB("col13",1,myCookie)
+      }
+      else{
+        updateDB("col13",0,myCookie)
+      }
+      const randomIndex = Math.floor(Math.random() * letters.length);
+  
+      const randomLetter = letters[randomIndex];
+
+      res.render("sixthPage",{randomLetter})
+
+  });
+  app.post('/submit1.3125', (req,res) => { 
+
+    let userLetter = req.body.userLetter;
+    userLetter = userLetter.toUpperCase()
+    const imageName = req.body.imageName;
+  
+    
+  
+    let myCookie = req.cookies.id
+  
+      console.log(myCookie)
+      if (myCookie){
+          myNewCookieValue = myCookie;
+          let cookieName = 'id'
+          const expirationDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+          res.cookie(cookieName, myNewCookieValue, {
+              expires: expirationDate,
+          });
+      }else{
+          let cookieName = "id"
+          myCookie = uuidv4();
+          
+          const expirationDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+          res.cookie(cookieName, myCookie, {
+              expires: expirationDate,
+          });
+      }
+      if (userLetter == imageName){
+        updateDB("col14",1,myCookie)
+      }
+      else{
+        updateDB("col14",0,myCookie)
+      }
+      const randomIndex = Math.floor(Math.random() * letters.length);
+  
+      const randomLetter = letters[randomIndex];
+
+      res.render("sixthPage2",{randomLetter})
+
+  });
+
+  app.post('/submit1.3125v2', (req,res) => { 
+
+    let userLetter = req.body.userLetter;
+    userLetter = userLetter.toUpperCase()
+    const imageName = req.body.imageName;
+  
+    
+  
+    let myCookie = req.cookies.id
+  
+      console.log(myCookie)
+      if (myCookie){
+          myNewCookieValue = myCookie;
+          let cookieName = 'id'
+          const expirationDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+          res.cookie(cookieName, myNewCookieValue, {
+              expires: expirationDate,
+          });
+      }else{
+          let cookieName = "id"
+          myCookie = uuidv4();
+          
+          const expirationDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+          res.cookie(cookieName, myCookie, {
+              expires: expirationDate,
+          });
+      }
+      if (userLetter == imageName){
+        updateDB("col15",1,myCookie)
+      }
+      else{
+        updateDB("col15",0,myCookie)
+      }
+      const randomIndex = Math.floor(Math.random() * letters.length);
+  
+      const randomLetter = letters[randomIndex];
+
+      res.render("sixthPage2",{randomLetter})
+
+  });
 
 
 
-
-
+  
 const listener = app.listen(
     process.env.PORT || 8080,
     process.env.HOST || "0.0.0.0",
