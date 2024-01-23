@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        img {
+            width: 13.125mm;
+            height: 13.125mm;
+            margin-bottom: 10px;
+        }
+
+        input {
+            padding: 5px;
+            width: 200px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form id="letterForm" action="/submit13.125v2" method="post">
+        <img src="./letters/<%= randomLetter %>.png"  alt="Random Letter Image">
+        <input type="hidden" name="imageName" value="<%= randomLetter %>">
+        <input type="text" name="userLetter" placeholder="Enter letter">
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
