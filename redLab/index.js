@@ -56,6 +56,63 @@ app.get('/biggestPage', (req,res) => {
 });
 
 
+function calcScore(uuid) {
+    const selectQuery = `SELECT * FROM scoretable WHERE id = ?`;
+
+    db.all(selectQuery, [uuid], function (err, rows) {
+        if (err) {
+            console.error('Error fetching data from the database:', err);
+            return;
+        }
+
+        const itemList = rows.map(row => ({
+            col1: row.col1,
+            col2: row.col2,
+            col3: row.col3,
+            col4: row.col4,
+            col5: row.col5,
+            col6: row.col6,
+            col7: row.col7,
+            col8: row.col8,
+            col9: row.col9,
+            col10: row.col10,
+            col11: row.col11,
+            col12: row.col12,
+            col13: row.col13,
+            col14: row.col14,
+            col15: row.col15,
+        }));
+
+        console.log('Item List:', itemList);
+        const item1 = rows.map(row => row.col1)[0];
+        const item2 = rows.map(row => row.col2)[0];
+        const item3 = rows.map(row => row.col3)[0];
+        const item4 = rows.map(row => row.col4)[0];
+        const item5 = rows.map(row => row.col5)[0];
+        const item6 = rows.map(row => row.col6)[0];
+        const item7 = rows.map(row => row.col7)[0];
+        const item8 = rows.map(row => row.col8)[0];
+        const item9 = rows.map(row => row.col9)[0];
+        const item10 = rows.map(row => row.col10)[0];
+        const item11 = rows.map(row => row.col11)[0];
+        const item12 = rows.map(row => row.col12)[0];
+        const item13 = rows.map(row => row.col13)[0];
+        const item14 = rows.map(row => row.col14)[0];
+        const item15 = rows.map(row => row.col15)[0];
+        if (item1 == 0 || item2 == 0){
+            return "20/200"
+        }
+        if (item3 == 0 || item4 == 0 || item5 == 0){
+            return "20/100"
+        }
+
+        
+
+
+    });
+
+}
+
 function updateDB(col,correct,identifier){   // col is column, correct is 1 or 0 whether the answer was right or not, identifier is the uuid
   const checkExistenceQuery = `SELECT COUNT(*) AS count FROM scoretable WHERE id = ?`;
 
@@ -725,15 +782,16 @@ app.post('/submit13.125v2', (req,res) => {
         updateDB("col15",1,myCookie)
       }
       else{
-        updateDB("col15",0,myCookie)
-      }
-      const randomIndex = Math.floor(Math.random() * letters.length);
+        updateDB("col15",0,myCookie)}
+        const randomIndex = Math.floor(Math.random() * letters.length);
   
-      const randomLetter = letters[randomIndex];
-
-      res.render("sixthPage2",{randomLetter})
+        const randomLetter = letters[randomIndex];
+    calcScore(myCookie)
+    res.render("",{randomLetter})
 
   });
+
+
 
 
 
