@@ -55,6 +55,11 @@ app.get('/biggestPage', (req,res) => {
   res.render('biggestPage', {randomLetter})
 });
 
+app.get('/aboutPage', (req,res) => { 
+
+res.render('aboutPage')
+});
+
 
 
 
