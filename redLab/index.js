@@ -56,61 +56,82 @@ app.get('/biggestPage', (req,res) => {
 });
 
 
+
+
 function calcScore(uuid) {
-    const selectQuery = `SELECT * FROM scoretable WHERE id = ?`;
+  return new Promise((resolve, reject) => {
+      const selectQuery = `SELECT * FROM scoretable WHERE id = ?`;
 
-    db.all(selectQuery, [uuid], function (err, rows) {
-        if (err) {
-            console.error('Error fetching data from the database:', err);
-            return;
-        }
+      db.all(selectQuery, [uuid], function (err, rows) {
+          if (err) {
+              console.error('Error fetching data from the database:', err);
+              reject(err);
+              return;
+          }
 
-        const itemList = rows.map(row => ({
-            col1: row.col1,
-            col2: row.col2,
-            col3: row.col3,
-            col4: row.col4,
-            col5: row.col5,
-            col6: row.col6,
-            col7: row.col7,
-            col8: row.col8,
-            col9: row.col9,
-            col10: row.col10,
-            col11: row.col11,
-            col12: row.col12,
-            col13: row.col13,
-            col14: row.col14,
-            col15: row.col15,
-        }));
+          const itemList = rows.map(row => ({
+              col1: row.col1,
+              col2: row.col2,
+              col3: row.col3,
+              col4: row.col4,
+              col5: row.col5,
+              col6: row.col6,
+              col7: row.col7,
+              col8: row.col8,
+              col9: row.col9,
+              col10: row.col10,
+              col11: row.col11,
+              col12: row.col12,
+              col13: row.col13,
+              col14: row.col14,
+              col15: row.col15,
+          }));
 
-        console.log('Item List:', itemList);
-        const item1 = rows.map(row => row.col1)[0];
-        const item2 = rows.map(row => row.col2)[0];
-        const item3 = rows.map(row => row.col3)[0];
-        const item4 = rows.map(row => row.col4)[0];
-        const item5 = rows.map(row => row.col5)[0];
-        const item6 = rows.map(row => row.col6)[0];
-        const item7 = rows.map(row => row.col7)[0];
-        const item8 = rows.map(row => row.col8)[0];
-        const item9 = rows.map(row => row.col9)[0];
-        const item10 = rows.map(row => row.col10)[0];
-        const item11 = rows.map(row => row.col11)[0];
-        const item12 = rows.map(row => row.col12)[0];
-        const item13 = rows.map(row => row.col13)[0];
-        const item14 = rows.map(row => row.col14)[0];
-        const item15 = rows.map(row => row.col15)[0];
-        if (item1 == 0 || item2 == 0){
-            return "20/200"
-        }
-        if (item3 == 0 || item4 == 0 || item5 == 0){
-            return "20/100"
-        }
+          console.log('Item List:', itemList);
+          const item1 = rows.map(row => row.col1)[0];
+          const item2 = rows.map(row => row.col2)[0];
+          const item3 = rows.map(row => row.col3)[0];
+          const item4 = rows.map(row => row.col4)[0];
+          const item5 = rows.map(row => row.col5)[0];
+          const item6 = rows.map(row => row.col6)[0];
+          const item7 = rows.map(row => row.col7)[0];
+          const item8 = rows.map(row => row.col8)[0];
+          const item9 = rows.map(row => row.col9)[0];
+          const item10 = rows.map(row => row.col10)[0];
+          const item11 = rows.map(row => row.col11)[0];
+          const item12 = rows.map(row => row.col12)[0];
+          const item13 = rows.map(row => row.col13)[0];
+          const item14 = rows.map(row => row.col14)[0];
+          const item15 = rows.map(row => row.col15)[0];
 
-        
+          if (item1 == 0 || item2 == 0) {
+              console.log("score is 20/200");
+              resolve("20/200");
+          }
+          if (item3 == 0 || item4 == 0 || item5 == 0) {
+              resolve("20/100");
+          }
 
+          const t4 = corrCount(6, 8, rows);
+          const t5 = corrCount(9, 10, rows);
+          const t6 = corrCount(11, 13, rows);
+          const t7 = corrCount(14, 15, rows);
 
-    });
+          console.log("t4: ", t4);
 
+          if (t4 >= 2) {
+              if (t5 >= 2) {
+                  if (t6 >= 2) {
+                      resolve("20/20");
+                  }
+                  resolve("20/30");
+              }
+              resolve("20/50");
+          }
+
+          resolve("20/70");
+      });
+  });
 }
 
 function updateDB(col,correct,identifier){   // col is column, correct is 1 or 0 whether the answer was right or not, identifier is the uuid
@@ -751,7 +772,9 @@ app.post('/submit13.125v2', (req,res) => {
 
   });
 
-  app.post('/submit1.3125v2', (req,res) => { 
+
+
+  app.post('/submit1.3125v2', async (req,res) => { 
 
     let userLetter = req.body.userLetter;
     userLetter = userLetter.toUpperCase()
@@ -783,16 +806,31 @@ app.post('/submit13.125v2', (req,res) => {
       }
       else{
         updateDB("col15",0,myCookie)}
-        const randomIndex = Math.floor(Math.random() * letters.length);
-  
-        const randomLetter = letters[randomIndex];
-    calcScore(myCookie)
-    res.render("",{randomLetter})
+
+      const myScore = await calcScore(myCookie);
+
+      if (myScore) {
+            console.log(myScore, "myscore");
+            res.render("resultsPage", { myScore });
+      } else {
+            console.error("Error calculating score");
+            res.status(500).send("Internal Server Error");
+      }
 
   });
 
 
 
+function corrCount(startind, endind,lst) {
+    let ct = 0;
+    for (let p = startind; p < endind - 1; p++) {
+
+      if (lst.map(row => row["col" + toString(p)])[0] == 1 ){
+          ct++;
+      }
+    }
+    return ct;
+}
 
 
   
