@@ -3,53 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>5 Input Text Boxes with Dropdowns</title>
+    <title>Worlde finder</title>
 </head>
 <body>
 
-    <form action="wordfinder" method="get">
-        <label for="textbox1">Letter 1:</label>
-        <input type="text" id="textbox1" name="letter1" maxlength="1">
-        <select name="type1">
-            <option value="green">green</option>
-            <option value="yellow">yellow</option>
-            <option value="gray">gray</option>
-        </select><br>
+    <label for="textbox1">Letter 1:</label>
+    <input type="text" id="textbox1" name="letter1" maxlength="1">
+    <select name="type1">
+        <option value="green">green</option>
+        <option value="yellow">yellow</option>
+        <option value="gray">gray</option>
+    </select><br>
 
-        <label for="textbox2">Letter 2:</label>
-        <input type="text" id="textbox2" name="letter2" maxlength="1">
-        <select name="type2">
-            <option value="green">green</option>
-            <option value="yellow">yellow</option>
-            <option value="gray">gray</option>
-        </select><br>
+    <label for="textbox2">Letter 2:</label>
+    <input type="text" id="textbox2" name="letter2" maxlength="1">
+    <select name="type2">
+        <option value="green">green</option>
+        <option value="yellow">yellow</option>
+        <option value="gray">gray</option>
+    </select><br>
 
-        <label for="textbox3">Letter 3:</label>
-        <input type="text" id="textbox3" name="letter3" maxlength="1">
-        <select name="type3">
-            <option value="green">green</option>
-            <option value="yellow">yellow</option>
-            <option value="gray">gray</option>
-        </select><br>
+    <label for="textbox3">Letter 3:</label>
+    <input type="text" id="textbox3" name="letter3" maxlength="1">
+    <select name="type3">
+        <option value="green">green</option>
+        <option value="yellow">yellow</option>
+        <option value="gray">gray</option>
+    </select><br>
 
-        <label for="textbox4">Letter 4:</label>
-        <input type="text" id="textbox4" name="letter4" maxlength="1">
-        <select name="type4">
-            <option value="green">green</option>
-            <option value="yellow">yellow</option>
-            <option value="gray">gray</option>
-        </select><br>
+    <label for="textbox4">Letter 4:</label>
+    <input type="text" id="textbox4" name="letter4" maxlength="1">
+    <select name="type4">
+        <option value="green">green</option>
+        <option value="yellow">yellow</option>
+        <option value="gray">gray</option>
+    </select><br>
 
-        <label for="textbox5">Letter 5:</label>
-        <input type="text" id="textbox5" name="letter5" maxlength="1">
-        <select name="type5">
-            <option value="green">green</option>
-            <option value="yellow">yellow</option>
-            <option value="gray">gray</option>
-        </select><br>
+    <label for="textbox5">Letter 5:</label>
+    <input type="text" id="textbox5" name="letter5" maxlength="1">
+    <select name="type5">
+        <option value="green">green</option>
+        <option value="yellow">yellow</option>
+        <option value="gray">gray</option>
+    </select><br>
+    
+    <button onclick=submitForm()>Submit</button>
 
-        <input type="submit" value="Submit">
-    </form>
+    <script>
+        async function submitForm() {
+            const data = {
+                letter1: { letter: document.getElementById('textbox1').value, type: document.querySelector('select[name="type1"]').value },
+                letter2: { letter: document.getElementById('textbox2').value, type: document.querySelector('select[name="type2"]').value },
+                letter3: { letter: document.getElementById('textbox3').value, type: document.querySelector('select[name="type3"]').value },
+                letter4: { letter: document.getElementById('textbox4').value, type: document.querySelector('select[name="type4"]').value },
+                letter5: { letter: document.getElementById('textbox5').value, type: document.querySelector('select[name="type5"]').value },
+            };
+            console.log(data, "data")
+            const response = await fetch('/determine', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            const result = await response.json();
+            console.log(result); 
+        }
+    </script>
 
 </body>
 </html>
